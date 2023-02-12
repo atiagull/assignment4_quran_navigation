@@ -1,6 +1,7 @@
 package com.example.assignment4_quran_navigation.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.assignment4_quran_navigation.R;
 import com.example.assignment4_quran_navigation.SurahNumberAndNames;
+import com.example.assignment4_quran_navigation.surahArabic;
 
 import java.util.List;
 
@@ -56,6 +58,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             int position = this.getBindingAdapterPosition();
             SurahNumberAndNames obj = surahObjectList.get(position);
             Log.d("msg","button is clicked" + obj.getSurahNumber() + " " + obj.getSurahName());
+            Intent intent = new Intent(context, surahArabic.class);
+            intent.putExtra("surahNumber",String.valueOf(obj.getSurahNumber()));
+            intent.putExtra("surahName",obj.getSurahName());
+            context.startActivity(intent);
         }
     }
 }
